@@ -1,39 +1,40 @@
 # Cinebh
 
-Cinebh is an internship project for building CinemaApp, a web-based
-ticketing and cinema management application for a cinema company
-operating across multiple locations.
-
-The application is planned to support movie listings, screening
-schedules, seat reservations, and online ticket purchases.
+CinemaApp is an internship project for a cinema ticketing and management application.
 
 ## Repositories
 
-| Repository | Description | Main technologies |
-| --- | --- | --- |
-| [cinebh-frontend](https://github.com/Cinebh/cinebh-frontend) | Web application | React, TypeScript, Vite |
-| [cinebh-backend](https://github.com/Cinebh/cinebh-backend) | REST API and persistence | Java, Spring Boot, PostgreSQL |
+- [Frontend](https://github.com/Cinebh/cinebh-frontend) — React, TypeScript, Vite
+- [Backend](https://github.com/Cinebh/cinebh-backend) — Java, Spring Boot, PostgreSQL
 
-Each repository contains its own setup instructions and development
-commands.
+## Getting Started
 
-## Development Status
+1. Install Git and start Docker Desktop (Linux containers, Compose 2.20.3+).
+2. Clone both repositories:
 
-The project is in its initial setup stage. The frontend and backend
-skeletons are established; business features and integration are
-planned for subsequent development.
+   ```powershell
+   mkdir Cinebh
+   cd Cinebh
+   git clone https://github.com/Cinebh/cinebh-backend.git
+   git clone https://github.com/Cinebh/cinebh-frontend.git
+   ```
 
-The backend is organized as a modular monolith, with packages grouped
-by business domain.
+3. Create the backend configuration (keep `.env` if it already exists):
 
-## Planned Features
+   ```powershell
+   cd cinebh-backend
+   Copy-Item .env.example .env
+   ```
 
-- Movie catalogue and screening schedules
-- Cinema locations, halls, and seating
-- Seat reservations and online ticket purchases
-- Cinema management tools
+4. Set `DB_PASSWORD` in `.env`. For an existing database, use its current password.
+5. Start the complete application:
 
-## Maintenance
+   ```powershell
+   cd ../cinebh-frontend
+   docker compose up
+   ```
 
-Developed as part of an internship assignment. Implementation details
-and setup documentation are maintained in the individual repositories.
+6. Wait for seed completion, then open [the application](http://localhost:3000)
+   or [Swagger UI](http://localhost:8080/swagger-ui.html).
+
+Stop with `Ctrl+C`. Next time, run `docker compose up` from `cinebh-frontend/`.
